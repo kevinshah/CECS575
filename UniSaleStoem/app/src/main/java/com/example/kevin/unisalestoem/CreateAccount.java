@@ -27,7 +27,7 @@ public class CreateAccount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
     //    Parse.enableLocalDatastore(this);
 
-        Parse.initialize(this, "uWclLZByL5x9wsKvdTvJyZhkL7GFlEWbZz07t3aQ", "0J08mMNuUXaKpP04wMyCS6RphTFzjfwbNzjIPXb5");
+      //  Parse.initialize(this, "uWclLZByL5x9wsKvdTvJyZhkL7GFlEWbZz07t3aQ", "0J08mMNuUXaKpP04wMyCS6RphTFzjfwbNzjIPXb5");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
     }
@@ -72,7 +72,7 @@ public class CreateAccount extends AppCompatActivity {
             gameScore.put("passwords", p);
             gameScore.saveInBackground();
 
-            Intent intent = new Intent(this, Login.class);
+            Intent intent = new Intent(this, mainPage.class);
             startActivity(intent);
         }
         else

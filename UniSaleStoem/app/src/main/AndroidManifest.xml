@@ -2,10 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kevin.unisalestoem" >
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
 
     <application
         android:allowBackup="true"
@@ -24,6 +22,10 @@
         <activity
             android:name=".CreateAccount"
             android:label="@string/title_activity_create_account" >
+        </activity>
+        <activity
+            android:name=".mainPage"
+            android:label="@string/title_activity_main_page" >
         </activity>
     </application>
 

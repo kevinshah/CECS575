@@ -1,24 +1,17 @@
-package com.example.kevin.unisalestoem;
+package com.example.kevin.unisalestorm;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.os.Build;
 
-import com.parse.Parse;
+import com.example.kevin.unisalestoem.R;
 import com.parse.ParseObject;
 
 public class CreateAccount extends AppCompatActivity {

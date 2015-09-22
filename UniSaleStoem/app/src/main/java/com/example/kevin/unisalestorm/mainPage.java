@@ -1,9 +1,11 @@
-package com.example.kevin.unisalestoem;
+package com.example.kevin.unisalestorm;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.kevin.unisalestoem.R;
 
 public class mainPage extends AppCompatActivity {
 

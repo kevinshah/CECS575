@@ -72,7 +72,7 @@ public class Login extends AppCompatActivity {
         ParseObject gameList = new ParseObject("Usernames");
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Usernames");
-        query.whereEqualTo("firstname", u);
+        query.whereEqualTo("email", u);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> arg0, ParseException arg1) {

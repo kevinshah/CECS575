@@ -48,7 +48,7 @@
         android:layout_marginTop="31dp"
         android:ems="10"
         android:gravity="center"
-        android:hint="Username"
+        android:hint="CSULB Email"
         android:inputType="textPersonName"
         android:textColor="#000000" />
 

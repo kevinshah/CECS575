@@ -22,7 +22,7 @@ import com.parse.ParseException;
 
 public class Login extends AppCompatActivity {
 
-    public static String name = "";
+    public static String username = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -53,8 +53,7 @@ public class Login extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void createAccount(View view)
-    {
+    public void createAccount(View view) {
         Intent intent = new Intent(this, CreateAccount.class);
         startActivity(intent);
     }
@@ -62,31 +61,29 @@ public class Login extends AppCompatActivity {
     //This puts the view when the done button is pressed
     //Takes you to the Google Maps page
 
-    public void logincheck(View view)
-    {
-        EditText username   = (EditText)findViewById(R.id.username);
-        String u = username.getText().toString();
-        name = u;
+    public void logincheck(View view) {
+     //   EditText uName   = (EditText)findViewById(R.id.username);
+        username = ((EditText)findViewById(R.id.username)).getText().toString();
 
 
-        ParseObject gameList = new ParseObject("Usernames");
+        ParseObject parseUsernames = new ParseObject("Usernames");
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Usernames");
-        query.whereEqualTo("email", u);
+        query.whereEqualTo("email", username);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> arg0, ParseException arg1) {
-                EditText password = (EditText) findViewById(R.id.password);
-                String p = password.getText().toString();
+                EditText parsePassword = (EditText) findViewById(R.id.password);
+                String password = parsePassword.getText().toString();
                 ParseObject user_pass = arg0.get(0);
                 Context c = Login.this;
                 String password_user = user_pass.getString("passwords");
-                if (p.equals(password_user)) {
+                if (password.equals(password_user)) {
                     Intent intent = new Intent(Login.this, mainPage.class);
                     startActivity(intent);
                 } else {
                  //   Toast.makeText(c, "Improper Login", Toast.LENGTH_LONG).show();
-                    password.setError("Wrong password");
+                    parsePassword.setError("Wrong password");
                 }
             }
         });

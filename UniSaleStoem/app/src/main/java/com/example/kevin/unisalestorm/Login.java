@@ -84,8 +84,10 @@ public class Login extends AppCompatActivity {
                 if (p.equals(password_user)) {
                     Intent intent = new Intent(Login.this, mainPage.class);
                     startActivity(intent);
-                } else
-                    Toast.makeText(c, "Improper Login" , Toast.LENGTH_LONG).show();
+                } else {
+                 //   Toast.makeText(c, "Improper Login", Toast.LENGTH_LONG).show();
+                    password.setError("Wrong password");
+                }
             }
         });
     }

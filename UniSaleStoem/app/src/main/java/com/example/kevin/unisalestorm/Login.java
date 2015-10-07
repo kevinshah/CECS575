@@ -20,6 +20,13 @@ import com.parse.ParseQuery;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
 public class Login extends AppCompatActivity {
 
     public static String username = "";
@@ -29,6 +36,33 @@ public class Login extends AppCompatActivity {
         Parse.initialize(this, "uWclLZByL5x9wsKvdTvJyZhkL7GFlEWbZz07t3aQ", "0J08mMNuUXaKpP04wMyCS6RphTFzjfwbNzjIPXb5");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+        final Button send = (Button) this.findViewById(R.id.send);
+        send.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                try {
+                    GMailSender sender = new GMailSender("skevin9119@gmail.com", "kevinshah");
+                    sender.sendMail("This is Subject dadadad Uni",
+                            "This is Bodylalalalal UniSale",
+                            "skevin9119@gmail.com",
+                            "kevin.s.91@gmail.com");
+                    Context c = Login.this;
+                    Toast.makeText(c, "Mail Sent ", Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Log.e("SendMail", e.getMessage(), e);
+                }
+
+            }
+        });
+
+
+
+
+
     }
 
     @Override

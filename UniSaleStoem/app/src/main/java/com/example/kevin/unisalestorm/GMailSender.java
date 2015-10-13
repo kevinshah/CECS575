@@ -1,8 +1,12 @@
 package com.example.kevin.unisalestorm;
 
-/**
- * Created by Kevin on 10/6/15.
- */
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.security.Security;
+import java.util.Properties;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -12,28 +16,24 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.security.Security;
-import java.util.Properties;
-
 
 
 public class GMailSender extends javax.mail.Authenticator {
     private String mailhost = "smtp.gmail.com";
-    private String user;
-    private String password;
+    private String user = "unisalestorm@gmail.com";
+    private String password = "kevinshah";
     private Session session;
 
     static {
         Security.addProvider(new com.example.kevin.unisalestorm.JSSEProvider());
     }
 
-    public GMailSender(String user, String password) {
-        this.user = user;
-        this.password = password;
+    public GMailSender() {
+
+       // this.user = user;
+       // this.password = password;
+        //Log.i("MYTAG", "KKKKKKKKKKK "+user);
+        //Log.i("MYTAG", "SSSSssssssss "+password);
 
         Properties props = new Properties();
         props.setProperty("mail.transport.protocol", "smtp");

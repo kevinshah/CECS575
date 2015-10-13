@@ -1,31 +1,26 @@
 package com.example.kevin.unisalestorm;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import android.content.Context;
 import android.content.Intent;
-
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
-import java.util.List;
-
-
-import com.example.kevin.unisalestoem.R;
-import com.parse.Parse;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-
-
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.kevin.unisalestoem.R;
+import com.parse.FindCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.List;
 
 public class Login extends AppCompatActivity {
 
@@ -35,8 +30,9 @@ public class Login extends AppCompatActivity {
 
         Parse.initialize(this, "uWclLZByL5x9wsKvdTvJyZhkL7GFlEWbZz07t3aQ", "0J08mMNuUXaKpP04wMyCS6RphTFzjfwbNzjIPXb5");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
+
+        setContentView(R.layout.activity_login);
 
         final Button send = (Button) this.findViewById(R.id.send);
         send.setOnClickListener(new View.OnClickListener() {
@@ -45,13 +41,12 @@ public class Login extends AppCompatActivity {
                 // TODO Auto-generated method stub
 
                 try {
-                    GMailSender sender = new GMailSender("skevin9119@gmail.com", "kevinshah");
-                    sender.sendMail("This is Subject dadadad Uni",
-                            "This is Bodylalalalal UniSale",
-                            "skevin9119@gmail.com",
-                            "kevin.s.91@gmail.com");
-                    Context c = Login.this;
-                    Toast.makeText(c, "Mail Sent ", Toast.LENGTH_LONG).show();
+                    GMailSender sender = new GMailSender();
+                    sender.sendMail("This is Subject",
+                            "This is Body",
+                            "unisalestorm@gmail.com",
+                            "unisalestorm@gmail.com");
+                    Toast.makeText(Login.this, "Email Sent", Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
                     Log.e("SendMail", e.getMessage(), e);
                 }
@@ -59,11 +54,9 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
-
-
-
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

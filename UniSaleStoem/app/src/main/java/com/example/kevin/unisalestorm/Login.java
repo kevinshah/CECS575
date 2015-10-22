@@ -5,13 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.kevin.unisalestoem.R;
 import com.parse.FindCallback;
@@ -33,27 +30,6 @@ public class Login extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_login);
-
-        final Button send = (Button) this.findViewById(R.id.send);
-        send.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-
-                try {
-                    GMailSender sender = new GMailSender();
-                    sender.sendMail("This is Subject",
-                            "This is Body",
-                            "unisalestorm@gmail.com",
-                            "unisalestorm@gmail.com");
-                    Toast.makeText(Login.this, "Email Sent", Toast.LENGTH_LONG).show();
-                } catch (Exception e) {
-                    Log.e("SendMail", e.getMessage(), e);
-                }
-
-            }
-        });
-
     }
 
 

@@ -5,4 +5,33 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_create_account">CreateAccount</string>
     <string name="title_activity_main_page">mainPage</string>
+    <string name="title_activity_add_item">addItem</string>
+    <string name="categories">Choose a Department</string>
+
+
+
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Parse Simple ListView</string>
+    <string name="namelabel">"Name : "</string>
+
+
+    <string-array name="categories">
+        <item>Appliances</item>
+        <item>Automotive</item>
+        <item>Baby</item>
+        <item>Beauty</item>
+        <item>Books</item>
+        <item>Cellphone</item>
+        <item>Clothing</item>
+        <item>Computers</item>
+        <item>Electronics</item>
+        <item>Sporting</item>
+        <item>Furniture</item>
+        <item>Patio, Lawn and Garden</item>
+        <item>Music Instrument</item>
+        <item>TV</item>
+        <item>Game</item>
+        <item>Other</item>
+    </string-array>
+    <string name="title_activity_single_item_view">SingleItemView</string>
 </resources>

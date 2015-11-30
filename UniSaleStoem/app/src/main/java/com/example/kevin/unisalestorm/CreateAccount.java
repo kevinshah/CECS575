@@ -1,26 +1,19 @@
 package com.example.kevin.unisalestorm;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.kevin.unisalestoem.R;
 import com.parse.ParseObject;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.net.Uri;
 
 public class CreateAccount extends AppCompatActivity {
    private EditText firstname;
@@ -115,6 +108,4 @@ public class CreateAccount extends AppCompatActivity {
         }
         return false;
     }
-
-
 }

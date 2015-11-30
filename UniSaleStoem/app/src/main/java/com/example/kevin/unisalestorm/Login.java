@@ -67,8 +67,6 @@ public class Login extends AppCompatActivity {
     public void logincheck(View view) {
      //   EditText uName   = (EditText)findViewById(R.id.username);
         username = ((EditText)findViewById(R.id.username)).getText().toString();
-
-
         ParseObject parseUsernames = new ParseObject("Usernames");
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Usernames");

@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,6 +26,14 @@
         <activity
             android:name="com.example.kevin.unisalestorm.mainPage"
             android:label="@string/title_activity_main_page" >
+        </activity>
+        <activity
+            android:name="com.example.kevin.unisalestorm.addItem"
+            android:label="@string/title_activity_add_item" >
+        </activity>
+        <activity
+            android:name="com.example.kevin.unisalestorm.SingleItemView"
+            android:label="@string/title_activity_single_item_view" >
         </activity>
     </application>
 

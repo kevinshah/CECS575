@@ -19,6 +19,7 @@ import com.parse.ParseQuery;
 
 import java.util.List;
 
+
 public class Login extends AppCompatActivity {
 
     public static String username = "";
@@ -68,6 +69,38 @@ public class Login extends AppCompatActivity {
      //   EditText uName   = (EditText)findViewById(R.id.username);
         username = ((EditText)findViewById(R.id.username)).getText().toString();
         ParseObject parseUsernames = new ParseObject("Usernames");
+
+
+
+/*
+        // Locate the image in res > drawable-hdpi
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
+                R.drawable.greenplus);
+        // Convert it to byte
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        // Compress image to lower quality scale 1 - 100
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] image = stream.toByteArray();
+
+        // Create the ParseFile
+        ParseFile file = new ParseFile("greenplus.png", image);
+        // Upload the image into Parse Cloud
+        file.saveInBackground();
+
+        // Create a New Class called "ImageUpload" in Parse
+        ParseObject parseMeal = new ParseObject("Meal");
+        parseMeal.put("title","title" );
+        parseMeal.put("author","auth" );
+        parseMeal.put("rating","5" );
+
+
+        // Create a column named "ImageFile" and insert the image
+        parseMeal.put("photo", file);
+
+        // Create the class and the columns
+        parseMeal.saveInBackground();
+
+        */
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Usernames");
         query.whereEqualTo("email", username);

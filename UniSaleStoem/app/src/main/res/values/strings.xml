@@ -14,6 +14,11 @@
     <string name="title_activity_main">Parse Simple ListView</string>
     <string name="namelabel">"Name : "</string>
 
+    <string name="btnIntend">Take (big) Picture</string>
+    <string name="btnIntendS">Take (small) Picture</string>
+    <string name="btnIntendV">Take Video</string>
+    <string name="cannot">Cannot</string>
+    <string name="album_name">CameraSample</string>
 
     <string-array name="categories">
         <item>Appliances</item>
@@ -34,4 +39,5 @@
         <item>Other</item>
     </string-array>
     <string name="title_activity_single_item_view">SingleItemView</string>
+    <string name="title_activity_item_details">itemDetails</string>
 </resources>

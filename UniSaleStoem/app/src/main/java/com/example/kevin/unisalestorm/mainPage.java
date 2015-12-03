@@ -121,13 +121,13 @@ public class mainPage extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
             // Locate the class table named "ItemDatabase" in Parse.com
-            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                    "ItemDatabase");
+
+            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("ItemDatabase");
             query.orderByDescending("_created_at");
             try {
                 ob = query.find();
             } catch (ParseException e) {
-              //  Log.e("Error", e.getMessage());
+                //  Log.e("Error", e.getMessage());
                 e.printStackTrace();
             }
             return null;

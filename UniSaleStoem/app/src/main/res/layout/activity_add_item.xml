@@ -112,7 +112,7 @@
         android:layout_alignLeft="@+id/price"
         android:layout_alignRight="@+id/price"
         android:layout_below="@+id/btnIntendS"
-        android:onClick="displayAll"
+        android:onClick="saveButton"
         android:background="@drawable/custom_btn_beige"
         android:paddingTop="30dp"
         android:text="Save Item" />

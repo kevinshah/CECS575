@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -24,17 +25,21 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.kevin.unisalestoem.R;
+import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseObject;
-import com.parse.ParseFile;
 
-import java.io.File;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+/*
+
+This class is developed for adding items to the market place.
+ */
 
 public class addItem extends AppCompatActivity {
 
@@ -43,6 +48,7 @@ public class addItem extends AppCompatActivity {
     private EditText description;
     private EditText price;
     private EditText contactNumber;
+    String username;
 
 
 
@@ -62,7 +68,7 @@ public class addItem extends AppCompatActivity {
 
     private static final String JPEG_FILE_PREFIX = "IMG_";
     private static final String JPEG_FILE_SUFFIX = ".jpg";
-
+    private Electronics elec= new Electronics();
     private AlbumStorageDirFactory mAlbumStorageDirFactory = null;
 
 
@@ -223,7 +229,10 @@ public class addItem extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+     //   username = getIntent().getExtras().getString("username");
         setContentView(R.layout.activity_add_item);
+
+        username = getIntent().getExtras().getString("username");
 
         mImageView = (ImageView) findViewById(R.id.imageView1);
 
@@ -345,7 +354,7 @@ public class addItem extends AppCompatActivity {
     }
 
 
-    public void displayAll(View view) {
+    public void saveButton(View view) {
 
         categories = (Spinner) findViewById(R.id.categories);
         itemName   = (EditText)findViewById(R.id.itemName);
@@ -376,13 +385,9 @@ public class addItem extends AppCompatActivity {
         // Upload the image into Parse Cloud
         file.saveInBackground();
 
-
-
-
-
         final Context context = this;;
 
-
+            gameScore.put("username", username);
             gameScore.put("category", saveCategory);
             gameScore.put("itemName", saveItemName);
             gameScore.put("description", saveDescription);
@@ -392,15 +397,18 @@ public class addItem extends AppCompatActivity {
             gameScore.saveInBackground();
 
             Toast.makeText(context, "Improper Login" +saveCategory, Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(this, mainPage.class);
-            startActivity(intent);
+
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(addItem.this, mainPage.class);
+                intent.putExtra("username", username);
+                startActivity(intent);
+            }
+        }, 1000);
+
 
     }
-
-
-
-
-
-
-
 }

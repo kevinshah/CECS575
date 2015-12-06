@@ -29,7 +29,6 @@ public class Login extends AppCompatActivity {
         Parse.initialize(this, "uWclLZByL5x9wsKvdTvJyZhkL7GFlEWbZz07t3aQ", "0J08mMNuUXaKpP04wMyCS6RphTFzjfwbNzjIPXb5");
         super.onCreate(savedInstanceState);
 
-
         setContentView(R.layout.activity_login);
     }
 
@@ -114,6 +113,7 @@ public class Login extends AppCompatActivity {
                 String password_user = user_pass.getString("passwords");
                 if (password.equals(password_user)) {
                     Intent intent = new Intent(Login.this, mainPage.class);
+                    intent.putExtra("username", username);
                     startActivity(intent);
                 } else {
                  //   Toast.makeText(c, "Improper Login", Toast.LENGTH_LONG).show();

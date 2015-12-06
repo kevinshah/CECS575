@@ -20,6 +20,13 @@
     <string name="cannot">Cannot</string>
     <string name="album_name">CameraSample</string>
 
+    <string name="price">"Price : "</string>
+    <string name="description">"Description : "</string>
+    <string name="category">"Category : "</string>
+    <string name="ranklabel">"Name : "</string>
+    <string name="countrylabel">"Category : "</string>
+    <string name="populationlabel">"Description : "</string>
+
     <string-array name="categories">
         <item>Appliances</item>
         <item>Automotive</item>
@@ -40,4 +47,7 @@
     </string-array>
     <string name="title_activity_single_item_view">SingleItemView</string>
     <string name="title_activity_item_details">itemDetails</string>
+    <string name="title_activity_my_uploads">myUploads</string>
+    <string name="title_activity_my_upload_single_list">myUploadSingleList</string>
+    <string name="title_activity_search">Search</string>
 </resources>

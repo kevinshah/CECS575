@@ -2,14 +2,11 @@ package com.example.kevin.unisalestorm;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.kevin.unisalestoem.R;
@@ -23,13 +20,13 @@ import java.util.List;
 
 
 
-public class mainPage extends Activity {
+public class myUploads extends Activity {
 
 
     ListView listview;
     List<ParseObject> ob;
     ProgressDialog mProgressDialog;
-    ListViewAdapter adapter;
+    ListViewMyUploaads adapter;
     private List<ListHelper> listHelper = null;
     String passedArg;
     String searchQuery;
@@ -38,16 +35,15 @@ public class mainPage extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         passedArg = getIntent().getExtras().getString("username");
-
-       // Toast.makeText(mainPage.this, "UserName From Login" +passedArg, Toast.LENGTH_LONG).show();
-        setContentView(R.layout.activity_main_page);
+        // Toast.makeText(mainPage.this, "UserName From Login" +passedArg, Toast.LENGTH_LONG).show();
+        setContentView(R.layout.activity_my_uploads);
         new RemoteDataTask().execute();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_page, menu);
+        getMenuInflater().inflate(R.menu.menu_my_uploads, menu);
         return true;
     }
 
@@ -67,27 +63,10 @@ public class mainPage extends Activity {
     }
 
 
-    public void myUploads(View view) {
-        Intent intent = new Intent(this, myUploads.class);
-        intent.putExtra("username", passedArg);
-        startActivity(intent);
-    }
-
-    public void search(View view) {
-
-        searchQuery = ((EditText)findViewById(R.id.searchField)).getText().toString();
-        Intent intent = new Intent(this, Search.class);
-        intent.putExtra("username", passedArg);
-        intent.putExtra("searchQuery", searchQuery);
-        startActivity(intent);
-    }
 
 
-    public void addItem(View view) {
-        Intent intent = new Intent(this, addItem.class);
-        intent.putExtra("username", passedArg);
-        startActivity(intent);
-    }
+
+
 
 
 
@@ -97,7 +76,7 @@ public class mainPage extends Activity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Create a progressdialog
-            mProgressDialog = new ProgressDialog(mainPage.this);
+            mProgressDialog = new ProgressDialog(myUploads.this);
             // Set progressdialog title
             mProgressDialog.setTitle("UniSaleStorm");
             // Set progressdialog message
@@ -110,12 +89,12 @@ public class mainPage extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
 
-
             // Create the array
             listHelper = new ArrayList<ListHelper>();
             try {
                 // Locate the class table named "Country" in Parse.com
                 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("ItemDatabase");
+                query.whereEqualTo("username", passedArg);
                 query.orderByDescending("_created_at");
 
                 ob = query.find();
@@ -142,7 +121,7 @@ public class mainPage extends Activity {
             // Locate the listview in listview_main.xml
             listview = (ListView) findViewById(R.id.listview);
             // Pass the results into ListViewAdapter.java
-            adapter = new ListViewAdapter(mainPage.this, listHelper, passedArg);
+            adapter = new ListViewMyUploaads(myUploads.this, listHelper, passedArg);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
             // Close the progressdialog

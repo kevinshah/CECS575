@@ -15,13 +15,19 @@ import com.parse.ParseObject;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*
+
+This is developed to support sigh up functionality.
+
+ */
+
 public class CreateAccount extends AppCompatActivity {
    private EditText firstname;
    private EditText lastname;
    private EditText email;
    private EditText password;
    private EditText repassword;
-
+    RandomAlphaNumericGen tempPassword = new RandomAlphaNumericGen();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     //    Parse.enableLocalDatastore(this);
@@ -58,15 +64,15 @@ public class CreateAccount extends AppCompatActivity {
         firstname   = (EditText)findViewById(R.id.firstname);
         lastname   = (EditText)findViewById(R.id.lastname);
         email   = (EditText)findViewById(R.id.email);
-        password   = (EditText)findViewById(R.id.password);
-        repassword   = (EditText)findViewById(R.id.repassword);
+    //    password   = (EditText)findViewById(R.id.password);
+    //    repassword   = (EditText)findViewById(R.id.repassword);
 
         ParseObject gameScore = new ParseObject("Usernames");
         String p = password.getText().toString();
         String saveFirstName = firstname.getText().toString();
         String saveLastName = lastname.getText().toString();
         String saveEmail = email.getText().toString();
-        String re_p = repassword.getText().toString();
+    //    String re_p = repassword.getText().toString();
         final Context context = this;;
 
         final String EditEmail = email.getText().toString();
@@ -74,19 +80,21 @@ public class CreateAccount extends AppCompatActivity {
         if (!isValidEmail(EditEmail)) {
             email.setError("Invalid Email");
         }
-        else if(p.equals(re_p)){
+        else if(saveEmail!=null){
             gameScore.put("firstname",saveFirstName );
-            gameScore.put("lastname",saveLastName );
-            gameScore.put("email",saveEmail );
-            gameScore.put("passwords", p);
+            gameScore.put("lastname", saveLastName);
+            gameScore.put("email", saveEmail);
+            gameScore.put("passwords", tempPassword);
+
+            Mail studendEmail=new Mail(tempPassword.toString());
             gameScore.saveInBackground();
 
             Intent intent = new Intent(this, mainPage.class);
             startActivity(intent);
         }
         else {
-            password.setError("Password didn't match");
-            repassword.setError("Password didn't match");
+         //   password.setError("Password didn't match");
+         //   repassword.setError("Password didn't match");
             // Toast.makeText(context , "Password didn't match",Toast.LENGTH_LONG).show();
         }
     }

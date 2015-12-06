@@ -5,7 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera"
+
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
 
     <application
@@ -39,6 +41,18 @@
         <activity
             android:name="com.example.kevin.unisalestorm.SingleItemView"
             android:label="@string/title_activity_single_item_view" >
+        </activity>
+        <activity
+            android:name="com.example.kevin.unisalestorm.myUploads"
+            android:label="@string/title_activity_my_uploads" >
+        </activity>
+        <activity
+            android:name="com.example.kevin.unisalestorm.myUploadSingleList"
+            android:label="@string/title_activity_my_upload_single_list" >
+        </activity>
+        <activity
+            android:name="com.example.kevin.unisalestorm.Search"
+            android:label="@string/title_activity_search" >
         </activity>
     </application>
 

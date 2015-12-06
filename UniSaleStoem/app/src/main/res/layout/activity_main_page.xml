@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.kevin.unisalestorm.mainPage">
+    tools:context="com.example.kevin.unisalestorm.mainPage"
+    android:background="#567652">
 
     <TextView
         android:id="@+id/welcome"
@@ -17,11 +18,21 @@
         android:textColor="#176CEC"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/search"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/myUploads"
+        android:text="My Uploads"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:padding="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/welcome"
+        android:src="@drawable/ic_action_search"
+        android:onClick="myUploads"/>
+    <EditText
+        android:id="@+id/searchField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:gravity="center"
@@ -30,11 +41,22 @@
         android:layout_alignLeft="@+id/welcome"
         android:layout_alignRight="@+id/welcome"
         android:layout_below="@+id/welcome"/>
+
+    <ImageButton
+        android:id="@+id/search"
+        android:layout_width="30dip"
+        android:layout_height="30dip"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/searchField"
+        android:src="@drawable/ic_action_search"
+        android:layout_below="@+id/myUploads"
+        android:onClick="search"/>
+
     <ListView
         android:id="@+id/listview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/search"/>
+        android:layout_below="@+id/searchField"/>
 
 
     <ImageView

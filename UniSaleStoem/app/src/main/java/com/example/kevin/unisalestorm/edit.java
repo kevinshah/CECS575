@@ -24,9 +24,12 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.example.kevin.unisalestoem.R;
+import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -40,7 +43,7 @@ import java.util.List;
 This class is developed for adding items to the market place.
  */
 
-public class addItem extends AppCompatActivity {
+public class edit extends AppCompatActivity {
 
     private Spinner categories;
     private EditText itemName;
@@ -148,6 +151,7 @@ public class addItem extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
 
 		/* Associate the Bitmap to the ImageView */
+        mImageView.setImageResource(android.R.color.transparent);
         mImageView.setImageBitmap(bitmap);
 
         mImageView.setVisibility(View.VISIBLE);
@@ -228,8 +232,8 @@ public class addItem extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-     //   username = getIntent().getExtras().getString("username");
-        setContentView(R.layout.activity_add_item);
+        //   username = getIntent().getExtras().getString("username");
+        setContentView(R.layout.activity_edit);
 
         username = getIntent().getExtras().getString("username");
 
@@ -261,6 +265,8 @@ public class addItem extends AppCompatActivity {
         switch (requestCode) {
             case ACTION_TAKE_PHOTO_B: {
                 if (resultCode == RESULT_OK) {
+                    mImageView.setImageResource(android.R.color.transparent);
+
                     handleBigCameraPhoto();
                 }
                 break;
@@ -268,6 +274,8 @@ public class addItem extends AppCompatActivity {
 
             case ACTION_TAKE_PHOTO_S: {
                 if (resultCode == RESULT_OK) {
+                    mImageView.setImageResource(android.R.color.transparent);
+
                     handleSmallCameraPhoto(data);
                 }
                 break;
@@ -285,9 +293,13 @@ public class addItem extends AppCompatActivity {
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
+
         super.onRestoreInstanceState(savedInstanceState);
         mImageBitmap = savedInstanceState.getParcelable(BITMAP_STORAGE_KEY);
+      //  mImageView.setBackground(android.R.color.transparent);
+
         mImageView.setImageBitmap(mImageBitmap);
+
         mImageView.setVisibility(
                 savedInstanceState.getBoolean(IMAGEVIEW_VISIBILITY_STORAGE_KEY) ?
                         ImageView.VISIBLE : ImageView.INVISIBLE
@@ -360,7 +372,7 @@ public class addItem extends AppCompatActivity {
         description   = (EditText)findViewById(R.id.description);
         price   = (EditText)findViewById(R.id.price);
         contactNumber   = (EditText)findViewById(R.id.contactNumber);
-      //  placeHolder   = (EditText)findViewById(R.id.placeHolder);
+        //  placeHolder   = (EditText)findViewById(R.id.placeHolder);
 
         ParseObject gameScore = new ParseObject("ItemDatabase");
         String saveContactNumber = contactNumber.getText().toString();
@@ -368,11 +380,6 @@ public class addItem extends AppCompatActivity {
         String saveDescription = description.getText().toString();
         String savePrice = price.getText().toString();
         String saveCategory = (String) categories.getSelectedItem();
-       // String re_p = repassword.getText().toString();
-
-
-
-        // Convert it to byte
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         // Compress image to lower quality scale 1 - 100
@@ -386,27 +393,42 @@ public class addItem extends AppCompatActivity {
 
         final Context context = this;;
 
-            gameScore.put("username", username);
-            gameScore.put("category", saveCategory);
-            gameScore.put("itemName", saveItemName);
-            gameScore.put("description", saveDescription);
-            gameScore.put("price", savePrice);
-            gameScore.put("contactNumber", saveContactNumber);
-            gameScore.put("photo", file);
-            gameScore.saveInBackground();
+        gameScore.put("username", username);
+        gameScore.put("category", saveCategory);
+        gameScore.put("itemName", saveItemName);
+        gameScore.put("description", saveDescription);
+        gameScore.put("price", savePrice);
+        gameScore.put("contactNumber", saveContactNumber);
+        gameScore.put("photo", file);
+        gameScore.saveInBackground();
 
         //    Toast.makeText(context, "Improper Login" +saveCategory, Toast.LENGTH_LONG).show();
-
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("ItemDatabase");
+        query.whereEqualTo("itemName", "Fan");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> invites, ParseException e) {
+                if (e == null) {
+                    // iterate over all messages and delete them
+                    for (ParseObject invite : invites) {
+                        invite.deleteInBackground();
+                      //  Toast.makeText(myUploadSingleList.this, "DELETE SUSSCESS", Toast.LENGTH_LONG);
+                    }
+                } else {
+                    //Handle condition here
+                }
+            }
+        });
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(addItem.this, mainPage.class);
+
+                Intent intent = new Intent(edit.this, mainPage.class);
                 intent.putExtra("username", username);
                 startActivity(intent);
             }
-        }, 1000);
+        }, 2000);
 
 
     }

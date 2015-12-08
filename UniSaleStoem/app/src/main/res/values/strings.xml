@@ -50,4 +50,6 @@
     <string name="title_activity_my_uploads">myUploads</string>
     <string name="title_activity_my_upload_single_list">myUploadSingleList</string>
     <string name="title_activity_search">Search</string>
+    <string name="title_activity_single_item_view_search">SingleItemViewSearch</string>
+    <string name="title_activity_edit">edit</string>
 </resources>

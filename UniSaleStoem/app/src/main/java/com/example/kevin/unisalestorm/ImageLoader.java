@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.widget.ImageView;
 
 import com.example.kevin.unisalestoem.R;
@@ -23,12 +24,15 @@ import java.util.WeakHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+
+
 public class ImageLoader {
+	ImageView imageView;
+	String link;
 
 	MemoryCache memoryCache = new MemoryCache();
 	FileCache fileCache;
-	private Map<ImageView, String> imageViews = Collections
-			.synchronizedMap(new WeakHashMap<ImageView, String>());
+	private Map<ImageView, String> imageViews = Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
 	ExecutorService executorService;
 	// Handler to display images in UI thread
 	Handler handler = new Handler();
@@ -40,15 +44,41 @@ public class ImageLoader {
 
 	final int stub_id = R.drawable.temp_img;
 
+	public static Bitmap getBitmapFromURL(String src) {
+
+		Bitmap bitmap = null;
+		try {
+			URL url = new URL(src);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setDoInput(true);
+			conn.connect();
+			InputStream is = conn.getInputStream();
+			bitmap = BitmapFactory.decodeStream(is);
+			is.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return bitmap;
+
+
+	}
+
+
 	public void DisplayImage(String url, ImageView imageView) {
 		imageViews.put(imageView, url);
-		Bitmap bitmap = memoryCache.get(url);
+
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy);
+		Bitmap bitmap = getBitmapFromURL(url);
+		imageView.setImageBitmap(bitmap);
+		/*
 		if (bitmap != null)
 			imageView.setImageBitmap(bitmap);
 		else {
 			queuePhoto(url, imageView);
-			imageView.setImageResource(stub_id);
+			imageView.setImageResource(R.drawable.temp_img);
 		}
+		*/
 	}
 
 	private void queuePhoto(String url, ImageView imageView) {
@@ -190,5 +220,4 @@ public class ImageLoader {
 		memoryCache.clear();
 		fileCache.clear();
 	}
-
 }

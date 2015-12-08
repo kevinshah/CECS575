@@ -1,55 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="#ffffcc">
+
+    <ImageView
+        android:id="@+id/flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="#000000"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="75dp"
+        android:padding="1dp" />
 
     <TextView
         android:id="@+id/ranklabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ranklabel" />
+        android:text="@string/ranklabel"
+        android:layout_below="@+id/flag"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/rank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/ranklabel" />
+        android:layout_toRightOf="@+id/ranklabel"
+        android:layout_below="@+id/flag"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+
+        />
 
     <TextView
         android:id="@+id/countrylabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ranklabel"
-        android:text="@string/countrylabel" />
+        android:text="@string/countrylabel"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rank"
-        android:layout_toRightOf="@+id/countrylabel" />
+        android:layout_toRightOf="@+id/countrylabel"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/populationlabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/countrylabel"
-        android:text="@string/populationlabel" />
+        android:text="@string/populationlabel"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/population"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/country"
-        android:layout_toRightOf="@+id/populationlabel" />
+        android:layout_toRightOf="@+id/populationlabel"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        />
     
-    <ImageView
-        android:id="@+id/flag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:background="#000000"
-        android:padding="1dp" />
+
 
     <Button
         android:id="@+id/contactSeller"
@@ -59,6 +85,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:onClick="contactSeller"
+        android:background="@drawable/custom_btn_beige"
+        android:layout_margin="15dp"
+        android:gravity="center"
         />
 
 </RelativeLayout>

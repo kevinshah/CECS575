@@ -2,6 +2,7 @@ package com.example.kevin.unisalestorm;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -65,8 +66,7 @@ public class ListViewAdapter extends BaseAdapter {
 			view = inflater.inflate(R.layout.listview_item, null);
 			// Locate the TextViews in listview_item.xml
 			holder.itemName = (TextView) view.findViewById(R.id.rank);
-			//holder.country = (TextView) view.findViewById(R.id.country);
-			//holder.population = (TextView) view.findViewById(R.id.population);
+
 			// Locate the ImageView in listview_item.xml
 			holder.flag = (ImageView) view.findViewById(R.id.flag);
 			view.setTag(holder);
@@ -75,10 +75,12 @@ public class ListViewAdapter extends BaseAdapter {
 		}
 		// Set the results into TextViews
 		holder.itemName.setText(listHelper.get(position).getItemName());
-		//holder.country.setText(worldpopulationlist.get(position).getCountry());
-		//holder.population.setText(worldpopulationlist.get(position).getPopulation());
+
+		String url =listHelper.get(position).getPhoto();
 		// Set the results into ImageView
+		Log.d("ListViewAdapter.java", url);
 		imageLoader.DisplayImage(listHelper.get(position).getPhoto(), holder.flag);
+
 		// Listen for ListView Item Click
 		view.setOnClickListener(new OnClickListener() {
 

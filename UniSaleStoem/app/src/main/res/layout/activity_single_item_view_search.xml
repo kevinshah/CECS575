@@ -3,14 +3,15 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffffcc">
+
     <ImageView
         android:id="@+id/flag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
         android:background="#000000"
+        android:layout_marginTop="150dp"
         android:layout_marginBottom="75dp"
-        android:layout_marginTop="170dp"
         android:padding="1dp" />
 
     <TextView
@@ -19,8 +20,10 @@
         android:layout_height="wrap_content"
         android:text="@string/ranklabel"
         android:layout_below="@+id/flag"
+
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/rank"
@@ -28,8 +31,10 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/ranklabel"
         android:layout_below="@+id/flag"
+
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/countrylabel"
@@ -38,7 +43,8 @@
         android:layout_below="@+id/ranklabel"
         android:text="@string/countrylabel"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/country"
@@ -47,7 +53,8 @@
         android:layout_below="@+id/rank"
         android:layout_toRightOf="@+id/countrylabel"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/populationlabel"
@@ -56,7 +63,8 @@
         android:layout_below="@+id/countrylabel"
         android:text="@string/populationlabel"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/population"
@@ -65,31 +73,20 @@
         android:layout_below="@+id/country"
         android:layout_toRightOf="@+id/populationlabel"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        />
 
 
     <Button
-        android:id="@+id/edit"
+        android:id="@+id/contactSeller"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Edit"
-        android:layout_above="@+id/delete"
-        android:layout_alignParentLeft="true"
-        android:onClick="editCheck"
-        android:background="@drawable/custom_btn_beige"
-        android:layout_margin="15dp"
-        android:gravity="center"/>
-
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Delete"
+        android:text="SINGLE SEARCH"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:onClick="deleteCheck"
         android:background="@drawable/custom_btn_beige"
         android:layout_margin="15dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        />
 
 </RelativeLayout>

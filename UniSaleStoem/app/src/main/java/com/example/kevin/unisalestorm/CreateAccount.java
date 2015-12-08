@@ -68,7 +68,7 @@ public class CreateAccount extends AppCompatActivity {
     //    repassword   = (EditText)findViewById(R.id.repassword);
 
         ParseObject gameScore = new ParseObject("Usernames");
-        String p = password.getText().toString();
+   //     String p = password.getText().toString();
         String saveFirstName = firstname.getText().toString();
         String saveLastName = lastname.getText().toString();
         String saveEmail = email.getText().toString();
@@ -84,12 +84,15 @@ public class CreateAccount extends AppCompatActivity {
             gameScore.put("firstname",saveFirstName );
             gameScore.put("lastname", saveLastName);
             gameScore.put("email", saveEmail);
-            gameScore.put("passwords", tempPassword);
+            gameScore.put("passwords", "zPQm13YS");
 
             Mail studendEmail=new Mail(tempPassword.toString());
             gameScore.saveInBackground();
 
-            Intent intent = new Intent(this, mainPage.class);
+            Intent intent = new Intent(this, Login.class);
+            intent.putExtra("username", saveEmail);
+            intent.putExtra("flag", "1");
+
             startActivity(intent);
         }
         else {
@@ -102,7 +105,7 @@ public class CreateAccount extends AppCompatActivity {
     // validating email id
     private boolean isValidEmail(String email) {
         String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "csulb.edu";
+                + "student.csulb.edu";
 
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = pattern.matcher(email);

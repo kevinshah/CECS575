@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Add Item"
+        android:text="Edit Item"
         android:textAllCaps="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#176CEC"
@@ -45,6 +45,8 @@
         android:gravity="center"
         android:hint="Item Name"
         android:textColor="#000000"
+        android:text="Fan"
+
         android:inputType="textPersonName">
 
     </EditText>
@@ -59,6 +61,7 @@
         android:gravity="center"
         android:hint="Description"
         android:textColor="#000000"
+        android:text="1 year old"
         android:layout_alignLeft="@+id/itemName"
         android:layout_alignRight="@+id/itemName"
         android:layout_below="@+id/itemName"
@@ -70,6 +73,8 @@
         android:layout_height="wrap_content"
         android:textSize="15dp"
         android:layout_centerHorizontal="true"
+        android:text="$66"
+
         android:ems="10"
         android:gravity="center"
         android:hint="price"
@@ -89,6 +94,7 @@
         android:layout_below="@+id/price"
         android:ems="10"
         android:gravity="center"
+        android:text="8622225154"
         android:hint="Contact Number"
         android:textColor="#000000" />
 
@@ -123,8 +129,11 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:visibility="visible"
+        android:src="@drawable/fannn"
         android:id="@+id/imageView1"
         android:layout_below="@+id/save_button"
+        android:layout_alignParentLeft="true"
+
         android:paddingTop="30dp"/>
 
 

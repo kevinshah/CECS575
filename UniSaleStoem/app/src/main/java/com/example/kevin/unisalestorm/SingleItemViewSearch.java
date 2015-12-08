@@ -3,20 +3,12 @@ package com.example.kevin.unisalestorm;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.kevin.unisalestoem.R;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 
-import java.util.List;
-
-public class myUploadSingleList extends Activity {
+public class SingleItemViewSearch extends Activity {
     // Declare Variables
     String itemName;
     String category;
@@ -34,7 +26,7 @@ public class myUploadSingleList extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Get the view from singleitemview.xml
-        setContentView(R.layout.activity_my_upload_single_list);
+        setContentView(R.layout.activity_single_item_view_search);
 
         Intent i = getIntent();
         // Get the result of rank
@@ -65,47 +57,4 @@ public class myUploadSingleList extends Activity {
         // Passes flag images URL into ImageLoader.class
         imageLoader.DisplayImage(photo, imgflag);
     }
-
-    public void deleteCheck(View view) {
-
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("ItemDatabase");
-        query.whereEqualTo("username", username);
-        query.whereEqualTo("itemName", itemName);
-        query.whereEqualTo("category", category);
-        query.whereEqualTo("description", description);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> invites, ParseException e) {
-                if (e == null) {
-                    // iterate over all messages and delete them
-                    for (ParseObject invite : invites) {
-                        invite.deleteInBackground();
-                        Toast.makeText(myUploadSingleList.this, "DELETE SUSSCESS", Toast.LENGTH_LONG);
-
-                        Intent intent = new Intent(myUploadSingleList.this, mainPage.class);
-                        intent.putExtra("username", username);
-                        startActivity(intent);
-                    }
-                } else {
-                    //Handle condition here
-                }
-            }
-        });
-    }
-
-    public void editCheck(View view) {
-
-        Intent intent = new Intent(myUploadSingleList.this, edit.class);
-        intent.putExtra("username", username);
-        startActivity(intent);
-
-       Toast.makeText(myUploadSingleList.this, "You fucking clicked on Edit CHeck You dickhead son of a bitch", Toast.LENGTH_LONG).show();
-    }
-
-
-
 }
-
-
-
-
-
